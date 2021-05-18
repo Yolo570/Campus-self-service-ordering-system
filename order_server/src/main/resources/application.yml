@@ -1,0 +1,19 @@
+spring:
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: order
+#  thymeleaf:
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    servlet:
+#      content-type: text/html
+#    encoding: UTF-8
+#    cache: false
+#    mode: LEGACYHTML5
+#  web:
+#    resources:
+#      static-locations: classpath:/static/
+#  mvc:
+#    static-path-pattern: /**

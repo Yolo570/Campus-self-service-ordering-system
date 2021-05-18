@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/main_bottom"
+    android:layout_height="wrap_content">
+    <RadioGroup
+        android:background="#F5F5F5"
+        android:id="@+id/main_footer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            style="@style/style_RadioButton"
+            android:drawableTop="@drawable/rb_home_selector"
+            android:text="首页"
+            android:textColor="@drawable/rb_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_order"
+            style="@style/style_RadioButton"
+            android:drawableTop="@drawable/rb_order_selector"
+            android:text="点餐"
+            android:textColor="@drawable/rb_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_take"
+            style="@style/style_RadioButton"
+            android:drawableTop="@drawable/rb_take_selector"
+            android:text="取餐"
+            android:textColor="@drawable/rb_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_myInfo"
+            style="@style/style_RadioButton"
+            android:drawableTop="@drawable/rb_own_selector"
+            android:text="我的"
+            android:textColor="@drawable/rb_text_selector" />
+    </RadioGroup>
+</RelativeLayout>

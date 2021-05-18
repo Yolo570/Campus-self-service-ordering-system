@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:maxLines="1"
+            android:drawableLeft="@mipmap/point"
+            android:drawablePadding="8dp"
+            android:text="商品名称"
+            android:textColor="#757575"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_cart_add"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/add_food" />
+
+        <TextView
+            android:id="@+id/tv_food_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="10sp"
+            android:layout_toLeftOf="@+id/iv_cart_add"
+            android:text="0"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/iv_cart_reduce"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="10sp"
+            android:layout_toLeftOf="@id/tv_food_num"
+            android:src="@mipmap/reduce" />
+
+        <TextView
+            android:id="@+id/tv_food_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="60dp"
+            android:layout_toLeftOf="@id/iv_cart_reduce"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="16sp"
+            android:text="￥测试"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</LinearLayout>

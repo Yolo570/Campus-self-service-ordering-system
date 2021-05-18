@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">SSPU校园自助点餐</string>
+    <!--请求地址-->
+    <!--        <string name="server_url">http://10.200.118.161:8080/</string>-->
+    <string name="server_url">http://192.168.0.103:8080/</string>
+    <string name="server_image_url">http://192.168.0.103:2570/</string>
+    <!--    <string name="server_image_url">http://10.200.118.161:2570/</string>-->
+    <!--用户登录-->
+    <string name="user_login">user/login.action</string>
+    <!--用户注册-->
+    <string name="user_register">user/register.action</string>
+    <!--用户信息-->
+    <string name="user_info">user/findByUserName.action</string>
+    <!--用户信息更改-->
+    <string name="rest_info">user/resetUserInfo.action</string>
+    <!--店铺列表信息-->
+    <string name="shop_info">shop/AllShops</string>
+    <!--店铺详情-->
+    <string name="shop_detail">shop/oneShop.action</string>
+    <!--商品类型-->
+    <string name="food_style">foodStyle/allFoodStyle.action</string>
+    <!--根据商品类型查询商品信息-->
+    <string name="food_info">foodInfo/foodInfos.action</string>
+    <!--订单详情-->
+    <string name="order_info">order/orderInfo.action</string>
+    <!--历史订单-->
+    <string name="orders_info">order/allOrderInfo.action</string>
+    <!--查看订单详情-->
+    <string name="order">order/findOrderInfo.action</string>
+</resources>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E7E8E8"
+    android:orientation="vertical"
+    tools:context=".view.ShopsActivity">
+
+    <include layout="@layout/main_title_bar" />
+    <!--校园商店信息-->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:background="#60c0ff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/addr"
+            android:drawableRight="@mipmap/order_right"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:text="SSPU门店"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="112dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/btn_orderway_selector"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbtn_invite"
+                style="@style/RadioButton_Style"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_margin="8dp"
+                android:checked="true"
+                android:text="自取" />
+
+            <RadioButton
+                android:id="@+id/rbtn_takeout"
+                style="@style/RadioButton_Style"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_margin="8dp"
+                android:text="外卖" />
+        </RadioGroup>
+    </RelativeLayout>
+    <!--校园商店信息结束-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="8dp"
+        android:background="@android:color/white" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <LinearLayout
+            android:id="@+id/loading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/waiting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="请稍后..."
+                android:textColor="@color/colorGrey" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_shops"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
+            />
+
+        <include layout="@layout/main_bottom_bar" />
+    </RelativeLayout>
+
+
+</LinearLayout>

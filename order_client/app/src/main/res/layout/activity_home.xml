@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/main_title_bar" />
+
+    <include layout="@layout/activity_home_banner" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_background">
+
+        <Button
+            android:id="@+id/btn_toOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="35dp"
+            android:background="@android:color/holo_blue_light"
+            android:text="立即点餐"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/btn_to_orders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="35dp"
+            android:background="@android:color/holo_blue_light"
+            android:text="查看订单"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+
+        <include layout="@layout/main_bottom_bar" />
+    </RelativeLayout>
+</LinearLayout>

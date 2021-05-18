@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:id="@+id/rl_banner"
+    android:background="#eeeeee">
+    <!--首页广告条-->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_adBanner"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="1dp"
+        android:gravity="center" />
+
+    <!--轮播图小圆点-->
+    <LinearLayout
+        android:id="@+id/point_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="10sp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <com.example.order_client.view.ViewPagerIndicator
+            android:id="@+id/vpi_advert_indicator"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:padding="4dp" />
+    </LinearLayout>
+    <!--    </RelativeLayout>-->
+</RelativeLayout>

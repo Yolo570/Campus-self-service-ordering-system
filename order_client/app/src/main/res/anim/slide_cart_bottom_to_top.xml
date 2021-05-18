@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator">
+    <!--duration：表示动画持续的时间-->
+    <!--fromYDelta：表示动画开始时在外轴的位置-->
+    <!--toYDelta：表示动画结束时在外轴的位置-->
+    <translate
+        android:duration="500"
+        android:fromYDelta="100.0%"
+        android:toYDelta="10.000002%" />
+    <!--alpha：表示界面透明度-->
+    <!--fromAlpha：表示起始透明度，取值范围：0.0~1.0-->
+    <!--toAlpha：表示结束透明度，取值范围：0.0~1.0-->
+    <alpha
+        android:duration="500"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0" />
+
+</set>
