@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+
 
 @SpringBootTest
 class UserInfoTests {
@@ -39,6 +43,33 @@ class UserInfoTests {
         userInfo.setUser_addr("上海浦东新区");
         UserInfo info = userInfoService.saveUserInfo(userInfo);
         System.out.println(info);
+    }
+
+    @Test
+    void test() {
+        String name = "zyw123456";
+        if (name.length() < 8 || name.length() > 12) {
+            System.out.println("密码长度较短...");
+        }
+        Deque<Character> stack = new LinkedList<>();
+        for (int i = 0; i < name.length(); i++) {
+            char c = name.charAt(i);
+            stack.push(c);
+            if (i < 3 && (c >= 'a' && c <= 'z')) {
+                stack.pop();
+            } else if (i >= 3) {
+                if (c >= '0' && c <= '9') {
+                    stack.pop();
+                } else {
+                    break;
+                }
+            }
+        }
+        if (stack.isEmpty()) {
+            System.out.println(name);
+        } else {
+            System.out.println("error");
+        }
     }
 
 

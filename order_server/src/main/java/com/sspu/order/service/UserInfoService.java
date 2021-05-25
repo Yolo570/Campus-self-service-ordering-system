@@ -22,8 +22,19 @@ public class UserInfoService {
         return userInfoDao.findUserInfoByUser_name(username);
     }
 
-    public UserInfo getOne(int id){
+    public UserInfo getOne(int id) {
         return userInfoDao.getOne(id);
     }
 
+    /**
+     * 判断数据库是否存在该用户名
+     */
+    public boolean checkedUser(String username) {
+        UserInfo user = userInfoDao.findUserInfoByUser_name(username);
+        if (user != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

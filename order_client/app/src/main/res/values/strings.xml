@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">SSPU校园自助点餐</string>
     <!--请求地址-->
-    <!--        <string name="server_url">http://10.200.118.161:8080/</string>-->
+<!--            <string name="server_url">http://10.200.24.38:8080/</string>-->
     <string name="server_url">http://192.168.0.103:8080/</string>
     <string name="server_image_url">http://192.168.0.103:2570/</string>
-    <!--    <string name="server_image_url">http://10.200.118.161:2570/</string>-->
+<!--        <string name="server_image_url">http://10.200.24.38:2570/</string>-->
     <!--用户登录-->
     <string name="user_login">user/login.action</string>
     <!--用户注册-->

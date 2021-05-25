@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.order_client.R;
 import com.example.order_client.po.UserInfo;
+import com.example.order_client.utils.AlgorithmUtil;
 import com.example.order_client.utils.JsonParse;
 import com.example.order_client.utils.SaveUserInfoUtil;
 import com.loopj.android.http.AsyncHttpClient;
@@ -77,59 +78,67 @@ public class RegisterActivity extends AppCompatActivity implements View.OnTouchL
      */
     private void setOnClickListener() {
         //返回控件监听
-        tv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        tv_back.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         });
         //注册控件监听
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = reg_username.getText().toString().trim();
-                String pwd = reg_password.getText().toString().trim();
-                String pwd_again = reg_password_again.getText().toString().trim();
-                if ("".equals(username)) {
-                    Toast.makeText(RegisterActivity.this, "您还没有输入用户名...", Toast.LENGTH_SHORT).show();
-                    return;
-                } else if (TextUtils.isEmpty(pwd)) {
-                    Toast.makeText(RegisterActivity.this, "您还没有输入密码...", Toast.LENGTH_SHORT).show();
-                    return;
-                } else if (TextUtils.isEmpty(pwd_again)) {
-                    Toast.makeText(RegisterActivity.this, "请您再次确认密码...", Toast.LENGTH_SHORT).show();
-                    return;
-                } else if (!pwd.equals(pwd_again)) {
-                    Toast.makeText(RegisterActivity.this, "两次密码输入不同...", Toast.LENGTH_SHORT).show();
-                    return;
-                }else {
-                    String url = getString(R.string.server_url) + getString(R.string.user_register);
-                    RequestParams params = new RequestParams();
-                    params.put("username", username);
-                    params.put("password", pwd);
-                    final AsyncHttpClient client = new AsyncHttpClient();
-                    client.post(url, params, new AsyncHttpResponseHandler() {
+        btn_register.setOnClickListener(v -> {
+            String username = reg_username.getText().toString().trim();
+            String pwd = reg_password.getText().toString().trim();
+            String pwd_again = reg_password_again.getText().toString().trim();
+            if ("".equals(username)) {
+                Toast.makeText(RegisterActivity.this, "您还没有输入用户名...", Toast.LENGTH_SHORT).show();
+                return;
+            } else if (!AlgorithmUtil.RegisterByUserName(username)) {
+                Toast.makeText(RegisterActivity.this, "用户名长度在8~12之间且前三个要求字母...", Toast.LENGTH_SHORT).show();
+                return;
+            } else if (TextUtils.isEmpty(pwd)) {
+                Toast.makeText(RegisterActivity.this, "您还没有输入密码...", Toast.LENGTH_SHORT).show();
+                return;
+            } else if (!AlgorithmUtil.RegisterByPwd(pwd)) {
+                Toast.makeText(RegisterActivity.this, "密码长度过短，应在在6~11之间...", Toast.LENGTH_SHORT).show();
+                return;
+            } else if (TextUtils.isEmpty(pwd_again)) {
+                Toast.makeText(RegisterActivity.this, "请您再次确认密码...", Toast.LENGTH_SHORT).show();
+                return;
+            } else if (!pwd.equals(pwd_again)) {
+                Toast.makeText(RegisterActivity.this, "两次密码输入不同...", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                String url = getString(R.string.server_url) + getString(R.string.user_register);
+                RequestParams params = new RequestParams();
+                String pwd_md5 = AlgorithmUtil.md5(pwd);
+                params.put("username", username);
+                params.put("password", pwd_md5);
+                final AsyncHttpClient client = new AsyncHttpClient();
+                client.post(url, params, new AsyncHttpResponseHandler() {
 
-                        @Override
-                        public void onSuccess(int i, Header[] headers, byte[] bytes) {
-                            try {
+                    @Override
+                    public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                        try {
+                            //判断是否成功
+                            String json = new String(bytes, "utf-8");
+                            UserInfo userInfo = JsonParse.getUserInfo(json);
+                            if (userInfo == null) {
+                                Toast.makeText(RegisterActivity.this, "该用户名已存在，请重新注册...", Toast.LENGTH_SHORT).show();
+                            }else {
                                 Toast.makeText(RegisterActivity.this, "注册成功，请登录...", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
                                 finish();
-                            } catch (Exception e) {
-                                e.printStackTrace();
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
+                    }
 
-                        @Override
-                        public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                            Toast.makeText(RegisterActivity.this, "请求失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                    @Override
+                    public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                        Toast.makeText(RegisterActivity.this, "网络异常请重新尝试...", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 

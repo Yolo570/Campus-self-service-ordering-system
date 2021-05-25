@@ -24,13 +24,18 @@ public class UserController {
 
     /**
      * 用户注册
+     *
+     * @return
      */
     @PostMapping("/register.action")
     public UserInfo registerUserInfo(@Param("username") String username, @Param("password") String password) {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUser_name(username);
-        userInfo.setUser_password(password);
-        return userInfoService.saveUserInfo(userInfo);
+        boolean flag = userInfoService.checkedUser(username);
+        if (!flag) {
+            UserInfo userInfo = new UserInfo();
+            userInfo.setUser_name(username);
+            userInfo.setUser_password(password);
+            return userInfoService.saveUserInfo(userInfo);
+        } else return null;
     }
 
     /**

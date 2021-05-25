@@ -18,7 +18,7 @@ public class OrderService {
 
     /**
      * 保存订单信息
-     *
+     *1.更新对应店铺的销售量、商品的销售量
      * @return
      */
     public void save(Order order) {
